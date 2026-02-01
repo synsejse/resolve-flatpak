@@ -20,9 +20,11 @@ mkdir -p "${BMD_RESOLVE_LICENSE_DIR}" "${BMD_RESOLVE_LOGS_DIR}"
 # Set library path to include Resolve's bundled libraries
 export LD_LIBRARY_PATH="/app/libs:${LD_LIBRARY_PATH:-}"
 
-# Workaround for GPU detection issues on some systems
-export __NV_PRIME_RENDER_OFFLOAD=1
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# Workaround for GPU detection issues on NVIDIA systems
+if lspci 2>/dev/null | grep -qi nvidia || [ -d /proc/driver/nvidia ]; then
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+fi
 
 # Launch Resolve with all arguments passed through
 exec /app/bin/resolve "$@"

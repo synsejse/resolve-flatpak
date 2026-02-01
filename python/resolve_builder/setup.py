@@ -98,9 +98,11 @@ def create_directory_structure() -> None:
 
 
 def copy_tree(src: Path, dst: Path) -> None:
-    """Copy a directory tree, explicitly preserving permissions."""
+    """Copy a directory tree, preserving symlinks and permissions."""
     if src.exists():
-        shutil.copytree(src, dst, dirs_exist_ok=True, copy_function=shutil.copy2)
+        shutil.copytree(
+            src, dst, symlinks=True, dirs_exist_ok=True, copy_function=shutil.copy2
+        )
 
 
 def copy_file(src: Path, dst: Path) -> None:

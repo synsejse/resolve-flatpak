@@ -113,7 +113,7 @@ def download_using_id(
     download_url = download_url_response.text
 
     # Download the file with progress bar
-    download_response = requests.get(download_url, stream=True, timeout=30)
+    download_response = requests.get(download_url, stream=True, timeout=(30, 300))
     download_response.raise_for_status()
 
     total_size = int(download_response.headers.get("Content-Length", 0))
