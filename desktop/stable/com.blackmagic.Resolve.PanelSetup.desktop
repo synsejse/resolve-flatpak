@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DaVinci Resolve Panels Setup
+Exec="/app/DaVinci Control Panels Setup/DaVinci Control Panels Setup"
+Icon=com.blackmagic.Resolve.PanelSetup
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo
+PrefersNonDefaultGPU=true
