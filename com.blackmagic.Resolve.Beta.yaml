@@ -47,6 +47,9 @@ finish-args:
 
   # DaVinci Resolve application settings
   - --persist=.local/share/DaVinciResolve
+  - --persist=Videos/CacheClip
+  - --persist=Videos/.gallery
+  - --persist=Documents/BlackmagicDesign
 
   # Use system GLib libraries to fix compatibility issues
   # See: https://www.reddit.com/r/Fedora/comments/12z32r1/davinci_resolve_libpango_undefined_symbol_g/
