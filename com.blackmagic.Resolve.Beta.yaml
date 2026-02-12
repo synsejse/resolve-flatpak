@@ -1,0 +1,104 @@
+####
+# Flatpak Configuration for building DaVinci Resolve BETA (Free Version)
+#
+# Build instructions:
+#   flatpak-builder --install-deps-from=flathub --force-clean --repo=.repo .build-dir com.blackmagic.Resolve.Beta.yaml
+#
+# Install from local build:
+#   flatpak --user remote-add --no-gpg-verify resolve-repo .repo
+#   flatpak --user install resolve-repo com.blackmagic.Resolve.Beta
+#
+# Note: This installs alongside the stable version (different app ID)
+####
+
+app-id: com.blackmagic.Resolve.Beta
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+
+command: /app/bin/resolve.sh
+
+finish-args:
+  # Display and graphics
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+
+  # Audio
+  - --socket=pulseaudio
+
+  # Network access (for updates, cloud features, etc.)
+  - --share=network
+
+  # Filesystem access for media files
+  - --filesystem=xdg-desktop
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-music
+  - --filesystem=xdg-pictures
+  - --filesystem=xdg-public-share
+  - --filesystem=xdg-videos
+
+  # External media access
+  - --filesystem=/media
+  - --filesystem=/run/media
+  - --filesystem=/mnt
+
+  # DaVinci Resolve application settings
+  - --persist=.local/share/DaVinciResolve
+  - --persist=Videos/CacheClip
+  - --persist=Videos/.gallery
+  - --persist=Documents/BlackmagicDesign
+
+  # Use system GLib libraries to fix compatibility issues
+  # See: https://www.reddit.com/r/Fedora/comments/12z32r1/davinci_resolve_libpango_undefined_symbol_g/
+  - --env=LD_PRELOAD=/lib/x86_64-linux-gnu/libglib-2.0.so.0 /lib/x86_64-linux-gnu/libgio-2.0.so.0 /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+
+modules:
+  # OpenGL Utility Library
+  - shared-modules/glu/glu-9.json
+
+  # libxcrypt - provides libcrypt.so.1 which is not in the runtime
+  # See: https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/issues/1708
+  - name: libxcrypt
+    buildsystem: autotools
+    config-opts:
+      - --enable-obsolete-api=glibc
+    sources:
+      - type: git
+        url: https://github.com/besser82/libxcrypt.git
+        tag: v4.5.2
+
+  # Main DaVinci Resolve BETA installation
+  - name: resolve
+    buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
+    build-commands:
+      # Install application icon
+      - install -Dm644 logo.png /app/share/icons/hicolor/scalable/apps/com.blackmagic.Resolve.Beta.png
+      # Run the complete installation process with --beta flag
+      - ./run_complete_installation.sh --beta
+    sources:
+      # Desktop entry templates
+      - type: dir
+        path: desktop/beta
+        dest: desktop
+      # Metainfo templates
+      - type: dir
+        path: metainfo/beta
+        dest: metainfo
+      # Python package
+      - type: dir
+        path: python
+        dest: python
+      # Launcher script
+      - type: file
+        path: bin/resolve.sh
+      # Build files
+      - type: file
+        path: run_complete_installation.sh
+      - type: file
+        path: logo.png

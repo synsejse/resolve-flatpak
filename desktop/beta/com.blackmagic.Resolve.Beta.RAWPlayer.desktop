@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Blackmagic RAW Player (Beta)
+Exec=/app/BlackmagicRAWPlayer/BlackmagicRAWPlayer
+Icon=com.blackmagic.Resolve.Beta.RAWPlayer
+Terminal=false
+MimeType=application/x-braw-clip;application/x-braw-sidecar
+StartupNotify=true
+Categories=AudioVideo
+PrefersNonDefaultGPU=true

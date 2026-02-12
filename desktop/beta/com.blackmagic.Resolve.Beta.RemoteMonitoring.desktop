@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DaVinci Remote Monitoring (Beta)
+Exec="/app/bin/DaVinci Remote Monitoring"
+Icon=com.blackmagic.Resolve.Beta.RemoteMonitoring
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo
+PrefersNonDefaultGPU=true

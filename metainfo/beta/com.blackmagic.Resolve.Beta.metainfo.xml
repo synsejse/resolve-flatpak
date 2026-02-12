@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.blackmagic.Resolve.Beta</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <name>DaVinci Resolve (Beta)</name>
+  <summary>Professional Editing, Color, Effects and Audio Post!</summary>
+
+  <description>
+    <p>
+      ${DESCRIPTION}
+    </p>
+  </description>
+
+  <launchable type="desktop-id">com.blackmagic.Resolve.Beta.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>DaVinci Resolve Cut Page</caption>
+      <image>https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/carousel/cut.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>DaVinci Resolve Edit Page</caption>
+      <image>https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/carousel/edit.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>DaVinci Resolve Color Page</caption>
+      <image>https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/carousel/color.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>DaVinci Resolve Fusion Page</caption>
+      <image>https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/carousel/fusion.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>DaVinci Resolve Fairlight Page</caption>
+      <image>https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/carousel/fairlight.jpg</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://www.blackmagicdesign.com/products/davinciresolve</url>
+  <project_group>Blackmagicdesign</project_group>
+
+  <provides>
+    <binary>resolve</binary>
+  </provides>
+
+  <releases>
+${RELEASES}
+  </releases>
+</component>

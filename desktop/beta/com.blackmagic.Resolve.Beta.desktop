@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DaVinci Resolve (Beta)
+Name[en_US]=DaVinci Resolve (Beta)
+GenericName=DaVinci Resolve (Beta)
+Comment=Revolutionary new tools for editing, visual effects, color correction and professional audio post production, all in a single application!
+Exec=/app/bin/resolve.sh %U
+Icon=com.blackmagic.Resolve.Beta
+Terminal=false
+MimeType=application/x-resolveproj;
+StartupNotify=true
+Categories=AudioVideo
+PrefersNonDefaultGPU=true

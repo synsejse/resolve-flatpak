@@ -1,0 +1,32 @@
+# Build directories
+build-dir
+.build-dir
+.build-dir-beta
+.repo
+.flatpak-builder
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Python
+venv
+.venv
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Build outputs
+*.flatpak
+resolve.zip
+
+# OS files
+.DS_Store
+Thumbs.db
